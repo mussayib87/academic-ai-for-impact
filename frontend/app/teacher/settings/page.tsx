@@ -1,0 +1,12 @@
+'use client';
+
+import { CheckCircle2, CircleAlert, Server } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { PageHeading } from '@/components/ui';
+import { API_BASE } from '@/lib/api';
+
+export default function SettingsPage() {
+  const [apiStatus, setApiStatus] = useState<'checking' | 'online' | 'offline'>('checking');
+  useEffect(() => { fetch(`${API_BASE}/health`, { cache: 'no-store' }).then((response) => setApiStatus(response.ok ? 'online' : 'offline')).catch(() => setApiStatus('offline')); }, []);
+  return <div className="fade-up"><PageHeading eyebrow="Workspace configuration" title="Settings" description="Runtime status and demo-data boundaries for this local deployment." /><section className="surface max-w-3xl rounded-xl p-5"><div className="flex items-start gap-3"><span className="grid size-9 place-items-center rounded-lg bg-cyan-200/10 text-cyan-100"><Server size={16} /></span><div><h2 className="text-sm font-semibold">API connection</h2><p className="mt-1 text-xs text-slate-500">Configured in NEXT_PUBLIC_API_URL for the frontend.</p></div><span className="ml-auto inline-flex items-center gap-1.5 text-xs">{apiStatus === 'online' ? <CheckCircle2 size={14} className="text-emerald-200" /> : apiStatus === 'offline' ? <CircleAlert size={14} className="text-rose-200" /> : <span className="size-3 animate-pulse rounded-full bg-amber-200" />}{apiStatus}</span></div><dl className="mt-5 grid gap-4 border-t border-white/8 pt-5 sm:grid-cols-2"><div><dt className="text-[10px] uppercase tracking-[.1em] text-slate-500">Mode</dt><dd className="mt-1 text-xs text-slate-200">Local demonstration</dd></div><div><dt className="text-[10px] uppercase tracking-[.1em] text-slate-500">Database</dt><dd className="mt-1 text-xs text-slate-200">SQLite by default · PostgreSQL supported</dd></div><div><dt className="text-[10px] uppercase tracking-[.1em] text-slate-500">Intervention provider</dt><dd className="mt-1 text-xs text-slate-200">Development template unless LLM_MODEL_NAME starts with ollama:</dd></div><div><dt className="text-[10px] uppercase tracking-[.1em] text-slate-500">Student records</dt><dd className="mt-1 text-xs text-slate-200">Fictional demonstration data</dd></div></dl></section><div className="mt-4 max-w-3xl rounded-lg border border-amber-100/15 bg-amber-100/[.035] p-4 text-xs leading-5 text-amber-50/80">Do not connect this demo to real student records until deployment secrets, institutional sources, access policy, and model validation are configured.</div></div>;
+}

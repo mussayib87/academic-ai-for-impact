@@ -1,0 +1,3 @@
+{
+  "tests/test_phase2_registry_and_quality.py::test_data_quality_dashboard_reports_real_checks": true
+}

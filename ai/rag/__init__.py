@@ -1,0 +1,1 @@
+"""Institutional document ingestion and retrieval."""

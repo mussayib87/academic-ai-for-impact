@@ -1,0 +1,1 @@
+"""Academic AI backend app."""

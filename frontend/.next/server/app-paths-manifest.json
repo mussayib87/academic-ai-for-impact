@@ -1,0 +1,11 @@
+{
+  "/login/page": "app/login/page.js",
+  "/teacher/students/[studentId]/page": "app/teacher/students/[studentId]/page.js",
+  "/teacher/students/page": "app/teacher/students/page.js",
+  "/teacher/analytics/page": "app/teacher/analytics/page.js",
+  "/teacher/interventions/page": "app/teacher/interventions/page.js",
+  "/teacher/early-warnings/page": "app/teacher/early-warnings/page.js",
+  "/teacher/academic-data/page": "app/teacher/academic-data/page.js",
+  "/teacher/assignments/page": "app/teacher/assignments/page.js",
+  "/teacher/dashboard/page": "app/teacher/dashboard/page.js"
+}
